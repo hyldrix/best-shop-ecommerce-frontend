@@ -27,9 +27,10 @@ export class RenderEngine {
             return;
         }
 
-        data.filter(filterCallback).forEach(product => {
+        const filteredProducts = data.filter(filterCallback);
+        for (const product of filteredProducts) {
             container.appendChild(this.createProductCard(product, product.salesStatus, addToCart));
-        });
+        }
     }
 
     static async renderRandomBestSets(container, fetchUrl, howMany) {
@@ -41,7 +42,8 @@ export class RenderEngine {
         }
 
         let filteredData = data.filter((product) => {
-            return product.name.toLowerCase().includes('set') || product.size === 'S-L' || product.size === 'S, M, XL';
+
+            return product.name.toLowerCase().includes('set') || product.size === 'S-L' || product.size === 'S, M, XL' || product.category.includes('luggage sets');
 
         });
 
@@ -53,11 +55,9 @@ export class RenderEngine {
 
         let bestSets = shuffled.slice(0, howMany);
 
-        bestSets.forEach(product => {
+        for (const product of bestSets) {
             container.appendChild(this.createCatalogBestSet(product));
-        });
-
-
+        }
 
     }
 
@@ -183,7 +183,6 @@ export class ShoppingCart {
 
         let cart = this.getCart();
 
-        console.log(localStorage.getItem(this.#storagekey) || '[]');
 
 
         if (!item?.name || !item?.price || !item?.size) {
@@ -212,7 +211,6 @@ export class ShoppingCart {
         this.renderCartQuantity(totalQuantity);
 
         localStorage.setItem(this.#storagekey, JSON.stringify(cart));
-        console.log(localStorage.getItem(this.#storagekey) || '[]');
 
 
     }
@@ -243,9 +241,9 @@ export class ShoppingCart {
         return this.getCart().reduce((acc, curr) => acc + curr.quantity, 0);
     }
 
+
+
     static async renderCartQuantity(quantity) {
-
-
         setTimeout(() => {
             let container = document.querySelector('.cart-quantity');
 
@@ -256,12 +254,11 @@ export class ShoppingCart {
                 return;
             }
 
-            if (!quantity) {
+            if (quantity === undefined || quantity === null) {
                 totalQuantity = this.getTotalQuantity();
             } else {
                 totalQuantity = quantity;
             }
-
 
             if (totalQuantity && totalQuantity > 0) {
                 container.style.display = 'flex';
@@ -270,10 +267,11 @@ export class ShoppingCart {
                 container.style.display = 'none';
             }
         }, 500);
-
-
-
     }
+
+
+
+
 
     static async renderMyCart() {
         let container = document.querySelector('#cart-items');
@@ -306,18 +304,18 @@ export class ShoppingCart {
 
         let tableItem = document.createElement('tr');
         tableItem.innerHTML = `
-        <td><img src="${item.imageUrl}" alt="${item.name}"></td>
-        <td>${item.name}</td>
-        <td>$${price}</td>
-        <td>
+        <td ><img src="${item.imageUrl}" alt="${item.name}"></td>
+        <td data-label="PRODUCT NAME">${item.name}</td>
+        <td data-label="PRICE">$${price}</td>
+        <td data-label="QUANTITY">
         <div class="qty-control"> 
         <button class="decrease">−</button>
         <input class="qty" type="number" value="${item.quantity}" min="1" max="10">
         <button class="increase">+</button>
         </div>
         </td>
-        <td>$${Number(price) * Number(item.quantity)}</td>
-        <td><a href=""><img src="/src/assets/delete.png" alt=""></a></td>
+        <td data-label="TOTAL">$${Number(price) * Number(item.quantity)}</td>
+        <td data-label="DELETE"><a href=""><img src="/src/assets/delete.png" alt=""></a></td>
         `;
 
         let deleteButton = tableItem.querySelector('a');
@@ -341,29 +339,25 @@ export class ShoppingCart {
     static modifyQuantity(item, operation, value) {
         let cart = this.getCart();
 
-
-        cart.forEach(i => {
+        for (const i of cart) {
             if (i.name === item.name && i.size === item.size && i.color === item.color) {
                 if (operation === 'increase') {
                     i.quantity++;
                 } else if (operation === 'decrease' && i.quantity > 1) {
                     i.quantity--;
-
-                }
-                else if (operation === 'change' && value) {
+                } else if (operation === 'change' && value) {
                     i.quantity = value;
                 }
             }
         }
-        );
+
         this.saveCart(cart);
         this.renderMyCart();
         this.renderTotals();
         this.renderCartQuantity();
-
     }
 
-    static renderTotals() {
+    static async renderTotals() {
 
         let cartTotals = document.querySelector('.cart-total');
 
@@ -383,7 +377,11 @@ export class ShoppingCart {
             return;
         }
 
-        let subTotalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+        let subTotalPrice = 0;
+        for (const item of cart) {
+            const currentPrice = await this.getItemPrice(item.id);
+            subTotalPrice += currentPrice * item.quantity;
+        }
         let isDiscount = subTotalPrice >= 3000
             || cart.some(i => i.name.toLowerCase().includes('set'))
             || cart.some(i => i.size.includes('S-L') || i.size.includes('S, M, XL'));
@@ -457,9 +455,8 @@ export class ShoppingCart {
 export class Header {
 
     static setActiveNavLink() {
-
         let navlinks = document.getElementsByClassName('nav-link');
-        let pathname = window.location.pathname;
+        let pathname = globalThis.location.pathname;
 
         for (let navLink of Array.from(navlinks)) {
             let currentLink = navLink.getAttribute('href');
@@ -470,9 +467,7 @@ export class Header {
             } else {
                 navLink.classList.remove('active');
             }
-
         }
-
     }
 
 
@@ -540,6 +535,8 @@ export class LoginModal {
             });
         }
 
+        let loginToggle = document.querySelector('.login-toggle');
+
         if (loginToggle) {
             loginToggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -569,9 +566,7 @@ export class LoginModal {
             loginBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 let form = document.querySelector('#login-form');
-                console.log(form);
                 let formData = new FormData(form);
-                console.log(formData);
                 this.validateForm(formData);
 
 
@@ -581,15 +576,7 @@ export class LoginModal {
 
     }
 
-    static isValidEmail(email) {
-        if (typeof email !== 'string') return false;
 
-        let regex = /^[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@[\w]+(?:[.-][\w]+)*\.[\w]{2,}$/;
-
-        let result = regex.test(email);
-
-        return result;
-    }
 
 
 
@@ -597,7 +584,6 @@ export class LoginModal {
 
         let email = formData.get('email');
         let password = formData.get('password');
-        console.log(password, email);
 
         let errorContainer = document.querySelector('.error-container');
         errorContainer.textContent = '';
@@ -605,7 +591,7 @@ export class LoginModal {
 
         let errors = [];
 
-        if (!this.isValidEmail(email)) {
+        if (!ValidationUtils.isValidEmail(email)) {
             errors.push('Invalid email address');
         }
         if (password.length < 8) {
@@ -638,6 +624,18 @@ export class LoginModal {
     }
 }
 
+export class ValidationUtils {
+    static isValidEmail(email) {
+        if (typeof email !== 'string') return false;
+
+        let regex = /^[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@\w+(?:[.-]\w+)*\.\w{2,}$/;
+
+        let result = regex.test(email);
+
+        return result;
+    }
+}
+
 export class FeedbackForm {
     static init() {
 
@@ -661,15 +659,6 @@ export class FeedbackForm {
 
     }
 
-    static isValidEmail(email) {
-        if (typeof email !== 'string') return false;
-
-        let regex = /^[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@[\w]+(?:[.-][\w]+)*\.[\w]{2,}$/;
-
-        let result = regex.test(email);
-
-        return result;
-    }
 
 
     static validateForm(formData) {
@@ -691,7 +680,7 @@ export class FeedbackForm {
         }
         if (!email) {
             errors.push('Email is required');
-        } else if (!this.isValidEmail(email)) {
+        } else if (!ValidationUtils.isValidEmail(email)) {
             errors.push('Invalid email format');
         }
         if (!message) {
@@ -722,8 +711,7 @@ export class FeedbackForm {
         }
 
         setTimeout(() => {
-            errorMsgContainer.classList.remove('error');
-            errorMsgContainer.classList.remove('success');
+            errorMsgContainer.classList.remove('error', 'success');
             errorMsgContainer.classList.add('hidden');
 
             errorMsgContainer.innerHTML = '';
@@ -734,10 +722,10 @@ export class FeedbackForm {
 
 
     }
-
     static submitForm(formData) {
         console.log('Form submitted:', formData);
     }
+
 
 }
 
@@ -769,20 +757,20 @@ export class QuantityControls {
             increaseButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 let input = controls.querySelector('.qty');
-                let currentQuantity = parseInt(input.value);
+                let currentQuantity = Number.parseInt(input.value);
                 input.value = currentQuantity + 1;
             });
             decreaseButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 let input = controls.querySelector('.qty');
-                let currentQuantity = parseInt(input.value);
+                let currentQuantity = Number.parseInt(input.value);
                 if (currentQuantity > 1) {
                     input.value = currentQuantity - 1;
                 }
             });
             input.addEventListener('change', () => {
-                let currentQuantity = parseInt(input.value);
-                if (isNaN(currentQuantity) || currentQuantity < 1) {
+                let currentQuantity = Number.parseInt(input.value);
+                if (Number.isNaN(currentQuantity) || currentQuantity < 1) {
                     input.value = 1;
                 }
             });
@@ -804,8 +792,8 @@ export class QuantityControls {
             });
 
             input.addEventListener('change', () => {
-                let currentQuantity = parseInt(input.value);
-                if (isNaN(currentQuantity) || currentQuantity < 1) {
+                let currentQuantity = Number.parseInt(input.value);
+                if (Number.isNaN(currentQuantity) || currentQuantity < 1) {
                     input.value = 1;
                 }
                 ShoppingCart.modifyQuantity(item, 'change', input.value);
@@ -826,13 +814,13 @@ export class AdditionalInfoSubsections {
         let navLinkContainers = Array.from(navLinksContainers);
         let subsectionItems = Array.from(subsections);
 
-        subsectionItems.forEach((subsection, index) => {
+        for (const [index, subsection] of subsectionItems.entries()) {
             if (index === 0) {
                 subsection.classList.add('active');
             } else {
                 subsection.classList.remove('active');
             }
-        });
+        }
 
         if (navLinkContainers.length > 0) {
             navLinkContainers[0].classList.add('active');
@@ -844,19 +832,25 @@ export class AdditionalInfoSubsections {
 
                 let link = container.querySelector('a');
 
-                navLinkContainers.forEach(navContainer => navContainer.classList.remove('active'));
+                for (let navLinkCont of navLinkContainers) {
+                    navLinkCont.classList.remove('active');
+                }
+
+
 
                 container.classList.add('active');
 
-                let target = link.getAttribute('data-tab');
+                let target = link.dataset.tab;
 
-                subsectionItems.forEach(subsection => {
+                for (let subsection of subsectionItems) {
                     if (subsection.classList.contains(target)) {
                         subsection.classList.add('active');
                     } else {
                         subsection.classList.remove('active');
                     }
-                });
+                }
+
+
             });
         }
     }
@@ -866,7 +860,6 @@ export class ReviewForm {
     static init(form) {
 
         let submitButton = form.querySelector('.submit');
-        console.log(form, submitButton);
 
         if (!form || !submitButton) {
             console.error('Form or submit button not found');
@@ -878,7 +871,7 @@ export class ReviewForm {
 
             let formData = new FormData(form);
 
-            this.validateForm(formData);
+            ReviewForm.validateForm(formData);
         });
     }
 
@@ -895,7 +888,7 @@ export class ReviewForm {
         }
         if (!email) {
             errors.push('Email is required');
-        } else if (!this.isValidEmail(email)) {
+        } else if (!ValidationUtils.isValidEmail(email)) {
             errors.push('Invalid email format');
         }
         if (!review) {
@@ -905,7 +898,6 @@ export class ReviewForm {
             errors.push('Rating is required');
         }
 
-        console.log(errors);
         let form = document.querySelector('#review-form');
         let errorSuccessContainer = document.querySelector('#success-error');
         if (errors.length > 0) {
@@ -926,16 +918,16 @@ export class ReviewForm {
         }, 5000);
 
     }
-
-    static isValidEmail(email) {
-        if (typeof email !== 'string') return false;
-        let regex = /^[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@[\w]+(?:[.-][\w]+)*\.[\w]{2,}$/;
-        return regex.test(email);
-    }
-
     static submitReview(formData) {
-        console.log('Review submitted:', Object.fromEntries(formData));
+        if (!formData) {
+            return;
+        }
+        console.info('Submitting review:', formData);
     }
+
+
+
+
 }
 
 export class SearchProducts {
@@ -976,7 +968,7 @@ export class SearchProducts {
 
         if (foundProduct) {
 
-            window.location.href = `/src/html/product.html?id=${foundProduct.id}`;
+            globalThis.location.href = `/src/html/product.html?id=${foundProduct.id}`;
         } else {
             popUp.classList.remove('hidden');
 
@@ -993,26 +985,23 @@ export class SearchProducts {
 
 export class DropdownMenus {
     static init() {
-
-
-
         const dropdowns = document.querySelectorAll('.custom-filter-dropdown');
 
-        dropdowns.forEach(dropdown => {
+        for (const dropdown of dropdowns) {
             const container = dropdown.querySelector('.dropdown-container');
             const trigger = dropdown.querySelector('.dropdown-trigger');
             const hiddenInput = dropdown.querySelector('input[type="hidden"]');
             const options = dropdown.querySelectorAll('.dropdown-list li');
+            const salesStatus = document.querySelector('#salesStatus');
 
-            options.forEach(option => {
+            for (const option of options) {
                 option.addEventListener('click', () => {
-                    const value = option.getAttribute('data-value');
-                    console.log(value);
+                    const value = option.dataset.value;
 
                     trigger.innerText = option.innerText;
                     hiddenInput.value = value;
 
-                    options.forEach(opt => opt.classList.remove('selected'));
+                    this.removeSelectedFromOptions(options);
                     option.classList.add('selected');
 
                     if (value === '') {
@@ -1021,18 +1010,29 @@ export class DropdownMenus {
                         container.classList.add('filter-active');
                     }
 
-                    console.log(`Filter [${hiddenInput.id}] set to: ${value}`);
-                });
-            });
-        });
+                    document.dispatchEvent(new CustomEvent('catalogFiltersChange'));
 
+                });
+
+            }
+            salesStatus.addEventListener('click', () => {
+                document.dispatchEvent(new CustomEvent('catalogFiltersChange'));
+            });
+
+        }
+    }
+
+    static removeSelectedFromOptions(options) {
+        for (const opt of options) {
+            opt.classList.remove('selected');
+        }
     }
 
     static reset() {
 
 
         const dropdowns = document.querySelectorAll('.custom-filter-dropdown');
-        dropdowns.forEach(dropdown => {
+        for (const dropdown of dropdowns) {
             const container = dropdown.querySelector('.dropdown-container');
             const trigger = dropdown.querySelector('.dropdown-trigger');
             const options = dropdown.querySelectorAll('.dropdown-list li');
@@ -1040,22 +1040,21 @@ export class DropdownMenus {
 
             trigger.innerHTML = 'Choose option <i class="fa-solid fa-chevron-down dropdown-arrow" ></i>';
 
-            options.forEach(option => {
+            for (const option of options) {
 
-                if (option['data-value'] !== '') {
-                    option.classList.remove('selected');
+                if (option.dataset.value === '') {
+                    option.classList.add('selected');
+                    container.classList.remove('filter-active');
                 }
                 else {
 
-                    option.classList.add('selected');
-                    container.classList.remove('filter-active');
-
+                    option.classList.remove('selected');
                 }
-            });
+            }
 
             container.classList.remove('filter-active');
             salesStatusCheckbox.checked = false;
-        });
+        }
 
     };
 }
@@ -1085,15 +1084,39 @@ export class CatalogButtons {
             openButton.classList.remove('hidden');
         });
 
+        const sortDropdown = document.querySelector('#sort-by');
+
+
+        if (sortDropdown) {
+            sortDropdown.addEventListener('change', () => {
+                CatalogButtons.triggerCatalogRefresh();
+            });
+
+        }
+        document.dispatchEvent(new CustomEvent('catalogFiltersChanged'));
+
+    }
+    static triggerCatalogRefresh() {
+        document.dispatchEvent(new CustomEvent('catalogFiltersChange'));
+
     }
     static clearFilters() {
 
-        let hiddenInputs = document.querySelectorAll('input[type="hidden"]');
-        hiddenInputs.forEach(input => {
-            input.value = '';
-        });
+        document.querySelector('#size').value = '';
+        document.querySelector('#color').value = '';
+        document.querySelector('#category').value = '';
+        document.querySelector('#salesStatus').checked = true;
+
+        document.querySelector('#size-display').textContent = 'Choose option';
+        document.querySelector('#color-display').textContent = 'Choose option';
+        document.querySelector('#category-display').textContent = 'Choose option';
+
         DropdownMenus.reset();
+
+
+        document.dispatchEvent(new CustomEvent('catalogFiltersChange'));
     }
+
 
 
 
@@ -1104,46 +1127,26 @@ export class CatalogOperations {
     static cardsPerPage = 12;
 
     static getFilters() {
-        const filters = {};
-        const dropdowns = document.querySelectorAll('.custom-filter-dropdown');
-        dropdowns.forEach(dropdown => {
-            const inputField = dropdown.querySelector('input[type="hidden"]');
-            const value = inputField.value;
+        let size = document.querySelector('#size').value;
+        let color = document.querySelector('#color').value;
+        let category = document.querySelector('#category').value;
+        let saleStatus = document.querySelector('#salesStatus').checked;
 
-
-            filters[inputField.id] = value;
-
-        });
-        let saleInput = document.querySelector('#salesStatus');
-        if (saleInput.checked) {
-            filters.salesStatus = true;
-        } else {
-            filters.salesStatus = false;
-        }
-
-        return filters;
+        return { size, color, category, saleStatus };
     }
 
     static applyFilters(data, filters) {
 
+        return data.filter(product => {
+            let sizeMatch = !filters.size || product.size.includes(filters.size);
+            let colorMatch = !filters.color || product.color === filters.color;
+            let categoryMatch = !filters.category || product.category === filters.category;
+            let saleMatch = !filters.saleStatus || product.salesStatus;
 
-        let filteredData = data;
-        let counter = 0;
+            return sizeMatch && colorMatch && categoryMatch && saleMatch;
+        });
 
-        for (let filter in filters) {
-            if (filters[filter] === '') continue;
-
-            filteredData = filteredData.filter(product => product[filter] === filters[filter]);
-            counter++;
-
-        }
-        if (counter === 0) {
-            filteredData = data;
-        }
-        return filteredData;
     }
-
-
 
 
     static sortProducts(data) {
@@ -1179,6 +1182,10 @@ export class CatalogOperations {
             endIndex = data.length;
         }
 
+        if (data.length === 0) {
+            startIndex = -1;
+        }
+
         let currentProductsSpan = document.querySelector('.current-pages');
         let outOfSpan = document.querySelector('.outof');
         currentProductsSpan.innerText = `${startIndex + 1} - ${endIndex}`;
@@ -1208,7 +1215,9 @@ export class CatalogOperations {
             pageButton.addEventListener('click', () => {
 
                 let paginationButtons = Array.from(document.querySelectorAll('.pagination'));
-                paginationButtons.forEach(btn => btn.classList.remove('active'));
+                for (const btn of paginationButtons) {
+                    btn.classList.remove('active');
+                }
                 pageButton.classList.add('active');
 
                 this.loadPage(data, i);
@@ -1236,7 +1245,6 @@ export class CatalogOperations {
 
         if (currentPage === 1) {
             prevButton.style.visibility = 'hidden';
-            console.log('Prev button hidden');
         } else {
             prevButton.style.visibility = 'visible';
 
@@ -1286,12 +1294,14 @@ export class CatalogOperations {
 
     static getCurrentPage() {
         let activeButton = document.querySelector('.page-btn-container .btn.pagination.active');
-        return activeButton ? parseInt(activeButton.innerText) : 1;
+        return activeButton ? Number.parseInt(activeButton.innerText) : 1;
     }
 
     static navigateToPage(data, pageNumber, totalPages) {
         let paginationButtons = Array.from(document.querySelectorAll('.page-btn-container .btn.pagination'));
-        paginationButtons.forEach(btn => btn.classList.remove('active'));
+        for (const btn of paginationButtons) {
+            btn.classList.remove('active');
+        }
 
         let targetButton = paginationButtons[pageNumber - 1];
         if (targetButton) {
@@ -1303,7 +1313,36 @@ export class CatalogOperations {
 
     }
 
+    static async refreshCatalog(data) {
+        let filters = CatalogOperations.getFilters();
+        let filteredData = CatalogOperations.applyFilters(data, filters);
+        let sortedData = CatalogOperations.sortProducts(filteredData);
+
+        CatalogOperations.loadPage(sortedData, 1);
+        CatalogOperations.renderPageButtons(sortedData);
+    }
+
 
 }
 
 
+export class HamburgerMenu {
+
+    static init() {
+        let hamburgerButton = document.querySelector('.hamburger');
+        let linksContainer = document.querySelector('.links');
+        let navLink = linksContainer.querySelectorAll('.nav-link');
+
+        hamburgerButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            hamburgerButton.classList.toggle('opened');
+            linksContainer.classList.toggle('hidden');
+
+            for (let link of navLink) {
+                link.classList.toggle('hidden');
+            }
+
+
+        });
+    }
+}

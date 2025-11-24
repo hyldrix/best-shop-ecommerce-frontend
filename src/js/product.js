@@ -1,5 +1,5 @@
 import { additionalInformationTemplate, footerTemplate, headerTemplate, productPageTemplate } from './templates.js';
-import { AdditionalInfoSubsections, DataOperations, Footer, Header, QuantityControls, RenderEngine, ReviewForm, ShoppingCart } from './main.js';
+import { AdditionalInfoSubsections, DataOperations, Footer, HamburgerMenu, Header, QuantityControls, RenderEngine, ReviewForm, ShoppingCart } from './main.js';
 
 class ProductPage {
     static async init() {
@@ -34,7 +34,7 @@ class ProductPage {
             randomProductsCallback,
             true);
 
-        ShoppingCart.renderCartQuantity();
+        HamburgerMenu.init()
 
 
     }
@@ -81,7 +81,7 @@ class ProductPage {
         addToCartButton.addEventListener('click', (e) => {
             e.preventDefault();
             let input = document.querySelector('.qty');
-            let quantity = parseInt(input.value);
+            let quantity = Number.parseInt(input.value);
             let dropdownForm = document.querySelector('.dropdown-form');
 
             let formData = new FormData(dropdownForm);
@@ -89,9 +89,8 @@ class ProductPage {
             let size = formData.get('size');
             let color = formData.get('color');
             let category = formData.get('category');
-            let value = parseInt(formData.get('qty'));
+            let value = Number.parseInt(formData.get('qty'));
 
-            console.log(size, color);
 
             const allFieldsSelected = size && color && category && value;
 
@@ -124,7 +123,7 @@ class ProductPage {
         let reviewForm = document.querySelector('#review-form');
         ReviewForm.init(reviewForm);
 
-
+        
 
 
 

@@ -44,7 +44,8 @@ html {
     margin-bottom: 5rem;
 
     h2 {
-        margin-bottom: 10px;
+        margin-bottom: 1rem;
+
     }
 
     p {
@@ -58,7 +59,8 @@ html {
 
 .hero {
     background-color: #E7E8E9;
-    padding: 100px 0;
+    padding: 2rem;
+    margin-bottom: 5rem;
 
     .wrapper {
         display: flex;
@@ -66,6 +68,7 @@ html {
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
+        margin-bottom: 10rem;
     }
 
     .text-container {
@@ -73,7 +76,7 @@ html {
         flex: 1 1 40%;
 
         >* {
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
 
@@ -98,18 +101,18 @@ html {
 
 // ----- CMO SECTION ------ //
 .marketing {
+
     position: relative;
-    margin-bottom: 5rem;
+
+    height: 600px;
 
     .wrapper {
         background-color: #ffffff;
-        transform: translateY(-15%);
-
+        transform: translateY(-30%);
 
 
         display: flex;
         flex-wrap: wrap;
-        height: 566px;
 
         -webkit-box-shadow: 8px 8px 34px 0px rgba(66, 68, 90, 0.2);
         -moz-box-shadow: 8px 8px 34px 0px rgba(66, 68, 90, 0.2);
@@ -125,10 +128,10 @@ html {
             flex-direction: column;
 
             .message-wrapper {
-                margin: 70px;
 
                 .cmo {
                     display: flex;
+                    padding: 4rem;
                     flex-direction: column;
                     align-content: flex-end;
 
@@ -152,402 +155,763 @@ html {
 
                     }
 
-                        h5 {
-                            font-weight: 700;
+                    h5 {
+                        font-weight: 700;
+                    }
+
+                    .quote {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: space-between;
+                        justify-content: space-between;
+
+                        h2 {
+                            line-height: 3.5rem;
+                            margin-bottom: 2rem
                         }
 
-                        .quote {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: space-between;
-                            justify-content: space-between;
+                        >p {
+                            color: variables.$text-greyed;
+                            margin-bottom: 20px;
+                            font-size: 1rem;
+                        }
 
-                            h2 {
-                                line-height: 3.5rem;
-                                margin-bottom: 2rem
-                            }
+                    }
+                }
+            }
 
-                            >p {
-                                color: variables.$text-greyed;
-                                margin-bottom: 20px;
-                                font-size: 1rem;
-                            }
+        }
+
+        .marketing-img-container {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+
+
+            }
+
+
+            &::after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background-color: #000000;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0.5;
+                z-index: 1;
+            }
+
+
+
+            .marketing-discount {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 80%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding-left: 4rem;
+                color: white;
+                z-index: 2;
+
+                >* {
+                    margin-bottom: 30px;
+                }
+            }
+
+
+
+        }
+
+
+
+
+
+    }
+}
+
+// ----- TRAVEL SUITCASES SECTION ------ //
+
+.travel-suitcases {
+
+    .slider-container {
+        position: relative;
+
+        i {
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 2;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+        }
+
+        &:hover i {
+            visibility: visible;
+        }
+
+        i:first-child {
+
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        i:last-child {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+
+        .carousel {
+            overflow: hidden;
+
+            scroll-behavior: smooth;
+            position: relative;
+            height: 600px;
+
+            display: flex;
+            flex-direction: row;
+
+            *:not(:last-child) {
+                margin-right: 2.3rem;
+            }
+
+
+            .card {
+
+
+                .img {
+                    position: relative;
+                    height: 600px;
+                    width: 296px;
+                    display: block;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: filter 0.7s, transform 0.7s;
+                    }
+
+                    .text-overlay {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        color: white;
+                        z-index: 10;
+                        text-align: left;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0.7s, visibility 0.7s;
+                        pointer-events: none;
+                        max-width: 100%;
+
+                        padding: 2rem;
+
+                        h5 {
+                            font-weight: 700;
+                            margin-bottom: 1rem;
+                        }
+
+                        p {
+                            margin: 0;
+                            font-weight: 400;
+                            font-size: 1.1rem;
+                            overflow-wrap: break-word;
+
 
                         }
                     }
+
+                    &:hover img {
+                        transform: scale(1.1);
+                        filter: brightness(60%);
+                    }
+
+                    &:hover .text-overlay {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+
+            }
+        }
+
+
+    }
+
+}
+
+.cmo>* {
+    margin-bottom: 2rem;
+}
+
+// ----- SELECED SUITCASES SECTION ------ //
+
+.selected-products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-around;
+    align-items: center;
+
+    .product-card {
+        @include mixins.product-card;
+
+    }
+
+
+}
+
+// ----- SPECIAL OFFER SECTION ------ //
+.special-offer {
+
+
+    .special-offer-container {
+        position: relative;
+
+        display: flex;
+        overflow: hidden;
+        background-color: #000000;
+
+        img {
+
+
+            object-fit: contain;
+            object-position: 50% 50%;
+            opacity: 50%;
+
+
+        }
+
+        .special-offer-text {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            flex-wrap: nowrap;
+
+            display: flex;
+            color: white;
+
+
+            .left-column {
+                flex: 0 0 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                margin: auto 0;
+
+                span {
+                    font-weight: 900;
+                    font-size: 12rem;
+
+
+                }
+            }
+
+            .right-column {
+                padding-top: 2rem;
+                flex: 1 1 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: 1rem;
+
+                >* {
+                    margin-bottom: 2rem;
+                    margin-left: 3rem;
+                }
+
+                h4 {
+                    font-weight: 900;
+                    font-size: 1.6rem;
+                    line-height: 2rem;
+
+
+                }
+
+                p {
+                    max-width: 70%;
+                }
+
+
+
+                .btn {
+                    align-self: flex-start;
+                }
+            }
+
+        }
+
+
+
+    }
+
+}
+
+
+// ----- NEW ARRIVALS SUITCASES SECTION ------ //
+.new-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+
+    .new-products-container {
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+        justify-content: space-evenly;
+
+        .product-card {
+            @include mixins.product-card;
+        }
+    }
+}
+
+// ----- OPINION SECTION ------ //
+
+.our-customers {
+    .our-customers-container {
+        display: flex;
+
+        flex-direction: row;
+        gap: 1.5rem;
+
+        .opinion-card {
+            width: 33%;
+
+            box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, 0.1);
+
+
+            padding: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+
+
+
+
+            *:not(:last-child) {
+                margin-bottom: 2rem;
+
+            }
+
+            .photo-container {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
 
             }
 
-            .marketing-img-container {
-                position: relative;
+            .customer-opinion {
+                span {
+                    line-height: 2rem;
+                    font-size: 1rem;
+                }
+            }
+
+            .customer-location {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: variables.$base-color;
+            }
+
+
+        }
+    }
+}
+
+
+
+// ----- FOOTER SECTION ------ //
+
+
+
+@media screen and (max-width: 768px) {
+
+    .mb {
+        margin-bottom: 1rem;
+    }
+
+    .hero {
+        padding: 4rem;
+
+
+        .wrapper {
+            flex-direction: column-reverse;
+            align-items: center;
+
+
+            .hero-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .text-container {
                 flex: 1;
-                height: inherit;
+                text-align: center;
+
+                h1 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 1rem;
+                    line-height: 1rem;
+
+                }
+
+
+
+
+
+            }
+
+            .img-container {
+                width: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    height: 200px;
+                    margin-left: -50px;
+                    width: auto;
+
+                }
+
+
+
+            }
+        }
+
+    }
+
+    .section-header h2 {
+        padding-top: 4rem;
+        font-size: 1.6rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .marketing {
+        height: 550px;
+        margin-bottom: 10rem;
+
+
+
+        .wrapper {
+
+            flex-direction: column;
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            height: auto;
+
+            .cmo-message {
+
+
+                .message-wrapper {
+                    flex: 1;
+
+
+                    .cmo {
+
+                        display: flex;
+                        align-items: center;
+                        gap: 2rem;
+                        padding: 2rem;
+
+                        .cmo-text {
+                            display: flex;
+                            align-self: center;
+
+                        }
+
+                        .quote {
+
+                            h2 {
+                                line-height: 1.5rem;
+                                font-size: 1.5rem;
+                                text-align: center;
+                            }
+
+                            p {
+                                line-height: 1.2rem;
+                                font-size: 0.9rem;
+                                text-align: justify;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .marketing-img-container {
+                width: 100%;
+                max-height: 500px;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-
-
-
                 }
-
-
-                &::after {
-                    content: '';
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    background-color: #000000;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    opacity: 0.5;
-                    z-index: 1;
-                }
-
-
 
                 .marketing-discount {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 70%;
-                    height: 100%;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    padding-left: 4rem;
-                    color: white;
-                    z-index: 2;
+                    align-items: center;
+                    width: 100%;
+                    padding: 2rem;
+                    box-sizing: border-box;
 
-                    >* {
-                        margin-bottom: 30px;
+                    h2 {
+                        font-size: 2rem;
+                    }
+
+                    p {
+                        font-size: 0.8rem;
+                        text-align: center;
                     }
                 }
-
-
-
             }
-
-
-
-
 
         }
     }
-
-    // ----- TRAVEL SUITCASES SECTION ------ //
 
     .travel-suitcases {
 
+        ul {
+            display: flex;
+            flex-direction: row;
+
+            li {
+                width: 100%;
+                text-align: center;
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+                margin-bottom: 2rem;
+                margin-left: 0;
+                margin-right: 0;
+                box-sizing: border-box;
+
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
         .slider-container {
-            position: relative;
 
             i {
-                visibility: hidden;
-                width: 50px;
-                height: 50px;
-                background-color: #ffffff;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                z-index: 2;
-                cursor: pointer;
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-
-            }
-
-            &:hover i {
                 visibility: visible;
             }
 
-            i:first-child {
-
-                left: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            i:last-child {
-                right: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-
             .carousel {
-                overflow: hidden;
-
-                scroll-behavior: smooth;
-                position: relative;
-                height: 600px;
-
-                display: flex;
-                flex-direction: row;
-
-                *:not(:last-child) {
-                    margin-right: 2.3rem;
-                }
-
+                margin: 5rem;
 
                 .card {
-
-
                     .img {
-                        position: relative;
-                        height: 600px;
-                        width: 296px;
-                        display: block;
-                        overflow: hidden;
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            transition: filter 0.7s, transform 0.7s;
-                        }
-
                         .text-overlay {
-                            position: absolute;
-                            bottom: 0;
-                            left: 0;
-                            color: white;
-                            z-index: 10;
-                            text-align: left;
-                            opacity: 0;
-                            visibility: hidden;
-                            transition: opacity 0.7s, visibility 0.7s;
-                            pointer-events: none;
-                            max-width: 100%;
-
-                            padding: 2rem;
-
-                            h5 {
-                                font-weight: 700;
-                                margin-bottom: 1rem;
-                            }
-
-                            p {
-                                margin: 0;
-                                font-weight: 400;
-                                font-size: 1.1rem;
-                                overflow-wrap: break-word;
-
-
-                            }
-                        }
-
-                        &:hover img {
-                            transform: scale(1.1);
-                            filter: brightness(60%);
-                        }
-
-                        &:hover .text-overlay {
                             opacity: 1;
                             visibility: visible;
+
+                            p {
+                                line-height: 0.9rem;
+                            }
+
+                        }
+
+                        img {
+                            filter: brightness(60%);
                         }
                     }
-
-
                 }
             }
-
 
         }
 
     }
 
-    .cmo>* {
-        margin-bottom: 2rem;
-    }
-
-    // ----- SELECED SUITCASES SECTION ------ //
 
     .selected-products-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+
 
         .product-card {
-            @include mixins.product-card;
-
-        }
-
-
-    }
-
-    // ----- SPECIAL OFFER SECTION ------ //
-    .special-offer {
-        min-height: 400px;
-
-        .special-offer-container {
-            position: relative;
-
-            display: flex;
-            overflow: hidden;
-            background-color: #000000;
-
-            img {
-
-
-                object-fit: contain;
-                object-position: 50% 50%;
-                opacity: 50%;
-
-
-            }
-
-            .special-offer-text {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                flex-wrap: wrap;
-
-                display: flex;
-                color: white;
-
-
-                .left-column {
-                    flex: 0 0 50%;
-                    padding-top: 3.5rem;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-start;
-
-                    span {
-                        font-weight: 900;
-                        font-size: 12rem;
-
-                    }
-                }
-
-                .right-column {
-                    padding-top: 5rem;
-                    flex: 0 0 50%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-
-                    >* {
-                        margin-bottom: 2rem;
-                        margin-left: 3rem;
-                    }
-
-                    h4 {
-                        font-weight: 900;
-                        font-size: 2.5rem;
-
-
-                    }
-
-                    p {
-                        max-width: 70%;
-                    }
-
-
-
-                    .btn {
-                        align-self: flex-start;
-                    }
-                }
-
-            }
-
-
-
+            margin-bottom: 2em;
         }
 
     }
 
 
-    // ----- NEW ARRIVALS SUITCASES SECTION ------ //
-    .new-products {
+
+    .special-offer .special-offer-container {
+        height: 100%;
         display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
-        .new-products-container {
-
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: space-between;
-
-            .product-card {
-                @include mixins.product-card;
-            }
+        img {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+            object-position: 50% 50%;
+            opacity: 50%;
+            z-index: 0;
         }
-    }
 
-    // ----- OPINION SECTION ------ //
+        .special-offer-text {
+            width: 100%;
+            height: 100%;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+            text-align: center;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
 
-    .our-customers {
-        .our-customers-container {
-            display: flex;
-
-            flex-direction: row;
-            gap: 1.5rem;
-
-            .opinion-card {
-                width: 33%;
-                max-height: 336px;
-
-                box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, 0.1);
-
-
-                padding: 2rem;
-
+            .left-column {
+                flex: 1 1 50%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                text-align: center;
+                justify-content: center;
+                padding: 0 2rem;
 
+                span {
+                    font-weight: 900;
+                    font-size: 6rem;
+                    margin-top: 4rem;
+                    margin-bottom: 4rem;
+                }
+            }
 
+            .right-column {
+                flex: 1 1 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
+                >* {
+                    margin-left: 0;
+                    margin-bottom: 1rem;
 
+                }
 
-                *:not(:last-child) {
+                p {
+                    max-width: 100%;
+                    font-size: 0.8rem;
                     margin-bottom: 2rem;
-
                 }
 
-                .photo-container {
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-
+                #getofferbtn {
+                    width: 50%;
+                    align-self: center;
+                    margin-bottom: 2rem;
                 }
-
-                .customer-opinion {
-                    span {
-                        line-height: 2rem;
-                        font-size: 1rem;
-                    }
-                }
-
-                .customer-location {
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    color: variables.$base-color;
-                }
-
-
             }
         }
     }
 
 
+    .our-customers {
 
-    // ----- FOOTER SECTION ------ //
+        .our-customers-container {
+            flex-wrap: wrap;
+            padding: 2rem;
 
-    
+            .opinion-card {
+                flex: 1 1 50%;
+                max-height: 100%;
+            }
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .new-products h2 {
+        margin-top: 4rem;
+    }
+
+    #footer .benefits-banner .benefits-container .benefit-card {
+        flex: 1 1 40%;
+
+
+    }
+
+    .pagination-info-container {
+        margin-right: 2rem;
+    }
+
+    .special-offer {
+        .special-offer-container {
+           
+            .special-offer-text {
+               .right-column {
+                  margin-right: 1rem;
+                }
+                .left-column {
+                margin-left: 1rem;
+                }
+            }
+        }
+    }
+
+
+}

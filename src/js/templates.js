@@ -25,17 +25,34 @@ export const headerTemplate = `<div class="top-header wrapper">
             </div>
         </div>
         <nav>
-            <ul class="menu">
-                <li>
-                    <a class="nav-link" href="/src/index.html">Home</a>
-                    <a class="nav-link" href="/src/html/catalog.html">Catalog<i
-                            class="fa-solid fa-chevron-down"></i></a>
-                    <a class="nav-link" href="/src/html/about.html">About Us</a>
-                    <a class="nav-link" href="/src/html/contact.html">Contact Us</a>
-                </li>
-            </ul>
+            <div class="classic-menu">
+                <ul class="menu">
+                    <li>
+                        <a class="nav-link" href="/src/index.html">Home</a>
+                        <a class="nav-link" href="/src/html/catalog.html">Catalog<i
+                                class="fa-solid fa-chevron-down"></i></a>
+                        <a class="nav-link" href="/src/html/about.html">About Us</a>
+                        <a class="nav-link" href="/src/html/contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-menu">
+                    <div class="navbar wrapper">
+                        <div class="heading">
+                            <a href="#hamburger-icon">
+                                <i class="hamburger fa fa-bars"></i>
+                            </a>
+                        </div>
+                        <div class="links hidden">
+                        <a class="nav-link hidden" href="/src/index.html">Home</a>
+                        <a class="nav-link hidden" href="/src/html/catalog.html">Catalog<iclass="fa-solid fa-chevron-down"></i></a>
+                        <a class="nav-link hidden" href="/src/html/about.html">About Us</a>
+                        <a class="nav-link hidden" href="/src/html/contact.html">Contact Us</a>
+                        </div>
+                </div>
+            </div>
         </nav>
-         <div class="modal-backdrop" hidden>
+        <div class="modal-backdrop" hidden>
         <div class="login-modal">
             <form id="login-form">
 
@@ -178,7 +195,7 @@ export const offerTemplate = `<div class="wrapper">
                             <h4>Offer Of The Month</h4>
                             <p>Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in
                                 vulputate.</p>
-                            <a href="#" class="btn">Get Offer Today</a>
+                            <a href="#" id="getofferbtn" class="btn">Get Offer Today</a>
                         </div>
                     </div>
 
@@ -263,6 +280,7 @@ export const productPageTemplate = (product) => `
                                     <option value="suitcases">Suitcases</option>
                                     <option value="kids' luggage">Kids' luggage</option>
                                     <option value="carry-ons">Carry-ons</option>
+                                    <option value="luggage sets">Luggage Sets</option>
                                 </select>
                                 <div class="form-controls">
                                     <div class="qty-control">

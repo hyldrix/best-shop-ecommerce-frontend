@@ -1,4 +1,4 @@
-import { FeedbackForm, Footer, Header, ShoppingCart } from './main.js';
+import { FeedbackForm, Footer, HamburgerMenu, Header, ShoppingCart } from './main.js';
 import { footerTemplate, headerTemplate } from './templates.js';
 
 class ContactPage {
@@ -19,6 +19,7 @@ class ContactPage {
         ShoppingCart.renderCartQuantity();
 
         FeedbackForm.init();
+        HamburgerMenu.init();
 
     }
 }

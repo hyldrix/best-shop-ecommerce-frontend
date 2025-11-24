@@ -112,7 +112,6 @@
                     width: 100%;
                     padding: 0.8rem;
                     border: 2px solid variables.$select-field-border;
-                    background-color: #f1f1f1;
                     color: variables.$text-greyed;
 
                     background-color: #ffffff;
@@ -163,11 +162,13 @@
                     input[type="number"]::-webkit-inner-spin-button,
                     input[type="number"]::-webkit-outer-spin-button {
                         -webkit-appearance: none;
+                        appearance: textfield;
                         margin: 0;
                     }
 
                     input[type="number"] {
                         -moz-appearance: textfield;
+                        appearance: textfield;
                     }
 
 
@@ -240,7 +241,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: stretch;
     }
 
@@ -331,7 +332,6 @@
 
             .review-amount {
                 font-weight: 700;
-                margin-bottom: 1rem;
                 margin-bottom: 5rem;
             }
 
@@ -410,12 +410,10 @@
             gap: 0.5rem;
             width: fit-content;
 
-            // Hide the radio buttons
             input[type="radio"] {
                 display: none;
             }
 
-            // Style the star labels
             label {
                 font-size: 1.2rem;
                 cursor: pointer;
@@ -430,18 +428,15 @@
                 }
             }
 
-            // Hover effect - color the hovered star and all stars to its right
             label:hover,
             label:hover~label {
                 color: variables.$star-color;
             }
 
-            // Style checked stars
             input[type="radio"]:checked~label {
                 color: variables.$star-color;
             }
 
-            // Keep checked stars colored when hovering over other stars
             input[type="radio"]:checked~label:hover~label,
             input[type="radio"]:checked~label~label:hover~label {
                 color: variables.$star-color;
@@ -592,4 +587,215 @@
 
 .hidden {
     display: none;
+}
+
+
+
+@media (max-width: 768px) {
+    .product-info {
+        margin: 2rem;
+
+        .wrapper {
+            .product-info-container {
+                flex-direction: column;
+                gap: 1.5rem;
+
+                .gallery {
+                    width: 100%;
+
+
+                    .main-img-container {
+                        min-height: 300px;
+
+                    }
+
+                    .thumbnails {
+
+                        img {
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+                }
+
+                .product-details {
+
+                    flex: 1;
+                    padding: 0;
+
+                    h3 {
+                        width: 100%;
+                        line-height: 2rem;
+                        font-size: 1.2rem;
+                    }
+
+                    .price {
+                        font-size: 1rem;
+                        padding-bottom: 1.5rem;
+                    }
+
+                    .description p {
+                        line-height: 1.5rem;
+                        font-size: 1rem;
+                        text-align: justify
+                    }
+
+                    .dropdown-form {
+                        margin-bottom: 1.5rem;
+
+                        select {
+                            font-size: 1rem;
+                            padding: 0.6rem;
+                        }
+
+                        .form-controls {
+                            flex-direction: column;
+                            gap: 0.8rem;
+
+                            .qty-control {
+                                width: 100%;
+                                justify-content: center;
+                            }
+
+                            .add-to-cart {
+                                width: 100%;
+
+                                .btn {
+                                    padding: 0.8rem 1rem;
+                                    font-size: 0.9rem;
+                                }
+                            }
+                        }
+                    }
+
+                    .payment-providers {
+                        flex-direction: row;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+
+                        span {
+                            font-size: 1rem;
+                        }
+
+                        img {
+                            max-width: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .you-may-also-like {
+
+        .wrapper {
+            .section-header {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+
+                &::after {
+                    width: 100%;
+                    margin: 0.5rem auto;
+                }
+            }
+
+            .you-may-container {
+                flex-direction: column;
+                align-items: center;
+                margin: 2rem;
+
+                gap: 3rem;
+                justify-content: center;
+            }
+        }
+    }
+
+    .additional-info {
+        margin: 3rem 0;
+
+        .toggle-menu .tabs {
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .details-container {
+            margin: 2rem;
+
+            p {
+                text-align: justify;
+            }
+
+            .reviews {
+                flex-direction: column;
+            }
+
+            .existing-reviews-container {
+                flex: 1;
+
+                p {
+
+                    text-align: center;
+                }
+
+                .header-line {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .review-card {
+                    flex-direction: column;
+                    padding-right: 0;
+
+                    .img {
+                        align-self: center;
+                    }
+                }
+
+                .review {
+                    margin-bottom: 2rem;
+
+                    header-line {
+                        flex-direction: column;
+                    }
+
+                }
+            }
+
+            .review-form {
+                flex: 1;
+            }
+
+            .main-form-data {
+                .contact-details {
+                    flex-direction: column;
+                    gap: 0.8rem;
+
+                    .input-container {
+                        flex: 1;
+
+                        input {
+                            width: 100%;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+
+                textarea {
+                    height: 150px;
+                }
+            }
+
+            .rate-product {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .details {
+                text-align: justify;
+
+
+            }
+        }
+    }
 }

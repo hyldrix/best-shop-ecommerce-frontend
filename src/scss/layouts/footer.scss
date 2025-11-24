@@ -29,19 +29,22 @@
             width: 100%;
             gap: 2rem;
             display: flex;
-            align-items: flex-start;
+            flex-wrap: wrap;
+            align-items: center;
 
             .brnrfits {
                 flex-wrap: wrap;
                 align-items: center;
-
+                justify-content: center
             }
 
             .benefit-card {
                 gap: 1rem;
                 display: flex;
                 flex-direction: row;
-                align-items: center
+                flex: 0 0 23%;
+                align-items: center;
+                align-self: center;
             }
 
         }
@@ -128,7 +131,7 @@
 
 
                 align-items: center;
-                gap: 1rem;
+                row-gap: 1rem;
 
                 .detail {
                     flex: 1 1 40%;
@@ -142,6 +145,12 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
+
+                        img {
+                            width: 20px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                        }
                     }
                 }
             }
@@ -155,4 +164,160 @@
         padding: 2rem 0;
         color: #000000;
     }
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+    #footer {
+
+        .benefits-banner {
+            padding: 6rem 4rem;
+
+            .wrapper {
+                .banner {
+                    text-align: center;
+
+                    h5 {
+                        font-size: 2.8rem;
+                    }
+
+                    .benefits-container {
+                        flex-direction: column;
+                        align-items: center;
+
+                        .benefit-card {
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+
+
+
+
+        }
+
+        .main-footer {
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem;
+
+            .site-map {
+                flex-direction: row;
+                row-gap: 0;
+                flex: 1 1 50%;
+
+
+
+            }
+
+            .subsection {
+                margin-bottom: 2rem;
+            }
+
+            .contact-details {
+                padding: 0;
+
+                .contact-info {
+                    flex-direction: column;
+                    gap: 0;
+
+                    .detail {
+                        flex: 1 1 100%;
+                        flex-direction: column;
+                        margin: 1rem;
+                    }
+                }
+
+                .subsection {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #footer {
+
+
+        .contact-info {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .benefits-banner {
+            padding: 3rem 2rem;
+        }
+
+        .main-footer.wrapper {
+            padding: 3rem 1rem;
+        }
+
+        .main-footer .contact-details {
+            padding: 0 0 0 2rem;
+
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+
+        .benefits-banner .banner {
+            padding: 3rem 2rem;
+
+            .benefits-container {
+                padding: 0 0 0 2rem;
+
+                .benefit-card {
+                    flex: 1 0 35%;
+                }
+            }
+        }
+
+        
+
+    }
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    #footer {
+
+
+
+        .main-footer.wrapper {
+            padding: 3rem 2rem;
+        }
+
+        .benefits-banner .banner {
+            padding: 3rem 2rem;
+
+            .benefits-container {
+                padding: 0 0 0 2rem;
+
+                .benefit-card {
+                    flex: 1 0 40%;
+                }
+            }
+        }
+
+        .main-footer .contact-details .contact-info {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .detail {
+                img {
+                    width: 20px;
+                    height: auto;
+                    aspect-ratio: 1/1;
+                }
+            }
+        }
+    }
+
 }

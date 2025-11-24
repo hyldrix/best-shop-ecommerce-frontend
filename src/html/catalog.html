@@ -21,7 +21,7 @@
     <header id="header">
 
     </header>
-    <div class="wrapper">
+    <div id="main-wrapper" class="wrapper">
         <div class="grid-container">
 
             <main>
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="sort-by-container">
-                                <select name="sort" id="sort-by">
+                                <select name="sort" id="sort-by" aria-label="Sort products by">
 
                                     <option value="">Default Sorting</option>
                                     <option value="price-asc">Price: Low to High</option>
@@ -111,7 +111,7 @@
                             </div>
                             <div class="input-group radio-group"><span class="label-text">Sale</span>
 
-                                <div class="radio-wrapper"><input type="checkbox" id="salesStatus" checked></div>
+                                <div class="radio-wrapper"><input type="checkbox" id="salesStatus" checked aria-label="Sale"></div>
                             </div>
 
                         </div>
@@ -128,32 +128,33 @@
                             <a href="#" class="btn pagination prev"><i class="fa-solid fa-angle-left"></i>Prev</a>
                         </div>
                         <div class="page-btn-container">
-                           
+
                         </div>
                         <div class="next-page">
                             <a href="#" class="btn pagination next">Next<i class="fa-solid fa-angle-right"></i></a>
                         </div>
                     </div>
                 </section>
-                </section>
             </main>
             <aside>
                 <div class="search-container">
-                    <input type="search" name="search" id="search" placeholder="Search Models">
-                    <div class="popup hidden">
-                        <span class="popuptext" id="myPopup">Product not found !</span>
+                    <div class="icon-container">
+                        <input type="search" name="search" id="search" placeholder="Search Models">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
                 </div>
-                <section class="top-sets">
-                    <h5>Top Best Sets</h5>
-                    <div class="product-container">
+                <div class="popup hidden">
+                    <span class="popuptext" id="myPopup">Product not found !</span>
+                </div>
+        <section class="top-sets">
+            <h5>Top Best Sets</h5>
+            <div class="product-container">
 
 
-                    </div>
-                </section>
-            </aside>
-        </div>
+            </div>
+        </section>
+        </aside>
+    </div>
     </div>
 
 

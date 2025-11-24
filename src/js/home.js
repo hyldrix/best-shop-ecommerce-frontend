@@ -1,22 +1,22 @@
-import { Footer, RenderEngine, ShoppingCart, Header, SpecialOffers } from './main.js';
+import { Footer, RenderEngine, ShoppingCart, Header, SpecialOffers, HamburgerMenu } from './main.js';
 import { headerTemplate, footerTemplate, offerTemplate } from './templates.js';
 
 
 
 
-class Carousel {
+ class Carousel {
     static addCarousel() {
         const carousel = document.querySelector('.carousel');
         const arrowButtons = document.querySelectorAll('.travel-slider-arrow');
-        const fontSize = parseInt(getComputedStyle(document.documentElement).fontSize);
+        const fontSize = Number.parseInt(getComputedStyle(document.documentElement).fontSize);
 
         const firstCardWidth = document.querySelector('.card').offsetWidth;
-        arrowButtons.forEach(arrow => {
+        for (const arrow of arrowButtons) {
             arrow.addEventListener('click', () => {
                 carousel.scrollLeft += arrow.id === 'left' ? -firstCardWidth - fontSize * 2.3 : firstCardWidth + fontSize * 2.3;
             });
-        });
-    };
+        }
+    }
 }
 
 class HomePage {
@@ -47,6 +47,7 @@ class HomePage {
             false);
 
         ShoppingCart.renderCartQuantity();
+        HamburgerMenu.init();
     }
 }
 

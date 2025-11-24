@@ -1,4 +1,4 @@
-import { Footer, Header, ShoppingCart, SpecialOffers } from './main.js';
+import { Footer, HamburgerMenu, Header, ShoppingCart, SpecialOffers } from './main.js';
 import { footerTemplate, headerTemplate, offerTemplate } from './templates.js';
 
 class AboutPage {
@@ -12,6 +12,8 @@ class AboutPage {
         SpecialOffers.init(offerTemplate);
 
         ShoppingCart.renderCartQuantity();
+                HamburgerMenu.init();
+        
 
 
     }

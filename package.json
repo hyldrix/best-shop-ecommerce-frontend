@@ -7,15 +7,14 @@
     "url": "https://autocode.git.epam.com/campus_javascript/capstone-project/project-template.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "Szymon Skaskiewicz",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"Dummy build script required for Autocode Compile\"",
-    "compile": "sass ./src/scss/main.scss ./dist/style.css",
-    "compile:watch": "sass ./src/scss/main.scss ./dist/style.css --watch",
-    "start": "live-server . --port=7000 --open=src/index.html --no-css-inject --ignore=node_modules,dist,.git,.well-known",
+    "compile": "sass --watch ./src/scss/main.scss ./dist/style.css",
+    "start": "live-server . --port=7000 --host=0.0.0.0 --open=src/index.html --watch=src --no-css-inject --ignore=node_modules,dist,.git,.well-known",
     "dev": "npm run compile & npm run start",
     "lint": "npx eslint && stylelint \"**/*.scss\""
   },

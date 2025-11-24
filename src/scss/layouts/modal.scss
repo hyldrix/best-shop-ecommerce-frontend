@@ -78,7 +78,7 @@
             gap: 0.5rem;
             align-items: center;
         }
-        
+
 
         input[type="password"] {
             position: relative
@@ -166,7 +166,7 @@
 
             }
 
-         
+
 
 
         }
@@ -178,16 +178,15 @@
             gap: 1rem;
             margin-bottom: 2rem;
 
-                color: #dc3545;
-                font-size: 0.8rem;
-                line-height: 1rem;
+            color: #dc3545;
+            font-size: 0.8rem;
+            line-height: 1rem;
         }
 
 
     }
 
-    width: 480px;
-    height: 384px;
+    width: 600px;
     padding: 5rem;
     background-color: #FFFFFF;
 
@@ -197,4 +196,15 @@
 
     }
 
+}
+
+@media screen and (max-width: 768px) {
+
+
+    .login-modal {
+        height: 100%;
+        width: 100%;
+        padding: 2rem;
+
+    }
 }
