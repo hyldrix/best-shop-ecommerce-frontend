@@ -2,7 +2,7 @@
 
 A modern, fully-functional e-commerce website template for a luggage and travel accessories store. Built with vanilla JavaScript, SCSS, and HTML5, featuring a responsive design, shopping cart functionality, and product management system.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/hyldrix/best-shop-ecommerce-frontend/blob/main/project%20screenshots/Macbook-Air-1559x6491.png "Page visual")
 
 ## 🎯 Project Overview
 
