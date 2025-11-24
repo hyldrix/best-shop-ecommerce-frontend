@@ -1,0 +1,183 @@
+@use '../abstracts/variables';
+
+.smaller-banner {
+
+    margin-bottom: 4rem;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .text-container {
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.cart-container {
+
+    .cart-table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-collapse: collapse;
+        font-weight: 700;
+        font-family: variables.$footer-banner-header-font;
+        margin-bottom: 5rem;
+
+        th,
+        td {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            flex: 1;
+        }
+
+        thead {
+            background-color: variables.$table-greyed;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            tr {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.5rem 0;
+            }
+
+        }
+
+        tbody {
+
+            tr {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                border-bottom: 2px solid variables.$base-color;
+            }
+
+            td>img {
+                width: 120px;
+                height: 120px;
+                object-fit: contain
+            }
+
+            td {
+                flex: 1;
+                display: flex;
+                text-align: center;
+
+                justify-content: center;
+                align-items: center;
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    -moz-appearance: textfield;
+                    appearance: none;
+                    margin: 0;
+                }
+
+                input[type=number] {
+                    font-size: 1.5rem;
+                    text-align: center;
+                    border: none;
+                    -moz-appearance: textfield;
+                }
+
+                .qty-control {
+                    button {
+                        background-color: transparent;
+                        color: #000;
+                        font-size: 2rem;
+                        border: none;
+
+                    }
+                }
+
+
+
+            }
+
+        }
+
+    }
+
+    .cart-summary {
+        display: flex;
+        flex-direction: row;
+        color: #FFFFFF;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        margin-bottom: 5rem;
+
+        .cart-controls {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .cart-total {
+
+            width: 30rem;
+            background-color: variables.$footer-banner-color;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            padding: 3rem;
+
+            >div {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                font-weight: 700;
+                padding: 1rem 0;
+
+
+
+            }
+
+            .underlined {
+                border-bottom: 2px solid variables.$base-color;
+            }
+
+
+            .totals {
+                font-size: 1.2rem;
+            }
+
+
+
+
+            .btn {
+                align-self: flex-start;
+            }
+
+        }
+
+    }
+
+    .nodata {
+        display: flex;
+        flex-direction: column;
+    }
+}

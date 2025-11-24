@@ -1,0 +1,124 @@
+@use '../abstracts/variables';
+
+.advantages {
+    .advantages-container {
+        display: flex;
+        margin: 8rem auto;
+        gap: 3rem;
+
+        .advantage-card {
+            flex: 1 1 20%;
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            gap: 24px;
+
+            .icon-img {
+                width: 62px;
+                height: 62px;
+                margin-bottom: 16px;
+                background-color: variables.$base-color;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    height: 70%;
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+
+.new-arrivals .wrapper {
+    margin-bottom: 10rem;
+
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+
+    .call-to-action {
+        flex: 1 1 50%;
+
+        h2 {
+            margin-bottom: 2rem;
+            font-size: 2.35rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: variables.$text-greyed;
+            margin-bottom: 1rem;
+
+        }
+
+        .btn {
+            margin-top: 1.5rem;
+        }
+
+
+
+
+    }
+
+    .img-container {
+        flex: 1 1 50%;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+
+        }
+
+    }
+}
+
+.team {
+    margin-bottom: 10rem;
+    text-align: center;
+
+    h2 {
+        margin-bottom: 2rem;
+        display: inline-block;
+
+
+    }
+
+    h2:after {
+        content: '';
+        display: block;
+        height: 2px;
+        background-color: variables.$base-color;
+        margin-top: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .team-container {
+        display: flex;
+
+        gap: 2rem;
+
+        .team-member {
+            flex: 1 1 33.33%;
+            text-align: center;
+
+            img {
+
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                margin-bottom: 2rem;
+            }
+
+
+        }
+
+    }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="/dist/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+            <link rel="icon" href="/src/favicon.ico" type="image/x-icon" />
+
+    <script type="module" src="/src/js/cart.js"></script>
+
+    <script type="module" src="/src/js/templates.js"></script>
+
+</head>
+
+<body>
+
+    <header id="header">
+
+    </header>
+    <main>
+        <section class="head-banner smaller-banner">
+            <section class="head-banner">
+                <img src="/src/assets/mycart.png" alt="">
+                <div class="text-container">
+                    <h1>My Cart</h1>
+                </div>
+            </section>
+        </section>
+        <section class="cart-container">
+            <div class="wrapper">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>IMAGE</th>
+                            <th>PRODUCT NAME</th>
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>TOTAL</th>
+                            <th>DELETE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="cart-items">
+
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+
+                <div class="cart-summary">
+                    <div class="cart-controls">
+                        <a href="/src/html/catalog.html" class="btn continue">Continue Shopping</a>
+                        <a href="" class="btn clear">Clear Shopping Cart</a>
+                    </div>
+                    <div class="cart-total">
+                        <div class="underlined">
+                            <div>Sub Total</div>
+                            <div class="subtotal">$8</div>
+                        </div>
+                        <div class="underlined">
+                            <div>Discount</div>
+                            <div class="discount">$5</div>
+                        </div>
+                        <div class="underlined">
+                            <div>Shipping</div>
+                            <div class="shipping">$205</div>
+                        </div>
+                        <div class="totals">
+                            <div>Total</div>
+                            <div class="total">$235</div>
+                        </div>
+                        <div class="checkout-btn">
+                            <a href="/src/html/checkout.html" class="checkout btn">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+
+
+        </section>
+    </main>
+
+    <footer id="footer">
+
+    </footer>
+</body>
+
+</html>

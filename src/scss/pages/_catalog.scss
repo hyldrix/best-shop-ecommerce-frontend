@@ -1,0 +1,401 @@
+@use '../abstracts/variables';
+
+.top-sets h5 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1.5rem;
+    margin: 5rem auto;
+}
+
+.product-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.set-product-card {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.78rem;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .star-rating {
+        margin-right: 0.5rem;
+        font-size: 0.6rem;
+        margin-bottom: 0.4rem;
+    }
+}
+
+
+.set-product-card img {
+    width: 85px;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+
+}
+
+
+
+.set-product-card .image-container {
+    flex: 1
+}
+
+.set-product-card .info-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex: 3;
+    justify-content: center;
+    margin-left: 1rem;
+}
+
+.product-card .info-container * {
+    line-height: 1.3rem;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.4rem;
+    border: 2px solid variables.$select-field-border;
+    margin-bottom: 2rem;
+    color: variables.$text-greyed
+}
+
+.search-container input::placeholder {
+
+    color: variables.$text-greyed
+}
+
+.search-container label {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.6rem;
+}
+
+.popup {
+    position: absolute;
+    top: 70%;
+    width: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 2rem;
+
+    display: flex;
+    padding: 0.5rem 1rem;
+    border: 2px solid #000000;
+    background-color: #000000;
+    border-radius: 12px;
+    justify-content: center;
+
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup span {
+    font-size: 0.76rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.upper-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upper-bar .sort-by-container select {
+    width: 100%;
+    padding: 0.4rem;
+    border: 2px solid variables.$select-field-border;
+    background-color: #ffffff;
+    color: variables.$text-greyed
+}
+
+.upper-bar .pagination-info-container {
+    color: variables.$text-greyed;
+}
+
+.upper-bar .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+}
+
+.upper-bar .right-controls .btn {
+    padding: 0.4rem;
+    border: 3px solid variables.$base-color;
+    background-color: variables.$base-color;
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    margin-left: 0.5rem;
+}
+
+.filter-panel {
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid variables.$base-color;
+    border-bottom: 2px solid variables.$base-color;
+    margin-top: 10px;
+    padding: 2rem 0.5rem 1rem 0.5rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .filter-inputs-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .input-group {
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-size: 0.76rem;
+    }
+
+    .input-group span {
+        font-size: 1rem;
+        align-self: flex-start;
+        font-weight: 700;
+        color: variables.$text-greyed;
+    }
+
+    .input-group select {
+        width: 100%;
+        padding: 0.4rem;
+        border: 2px solid variables.$select-field-border;
+        background-color: #ffffff;
+        color: variables.$text-greyed
+    }
+
+    .input-group input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        accent-color: #000000;
+        background-color: variables.$text-light-greyed;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        background-color: #E0E0E0;
+        border-radius: 50%;
+
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    input[type="checkbox"]::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+
+        transform: scale(0);
+        transition: 0.1s transform ease-in-out;
+
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    input[type="checkbox"]::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+
+        transform: scale(0);
+        transition: 0.1s transform ease-in-out;
+    }
+
+    input[type="checkbox"]:checked::before {
+        transform: scale(1);
+    }
+
+    .radio-wrapper {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+}
+
+.button-row {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.78rem;
+
+    .btn {
+        width: 150px;
+        text-align: center;
+    }
+}
+
+.custom-filter-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-trigger {
+    padding: 0.4rem;
+    border: 2px solid variables.$select-field-border;
+    background-color: #ffffff;
+    color: variables.$text-greyed;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 2px solid variables.$select-field-border;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 999;
+}
+
+.dropdown-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdown-list li:hover {
+    background-color: #f9f9f9;
+    color: black;
+}
+
+.dropdown-container:hover .dropdown-list {
+    display: block;
+}
+
+.dropdown-container:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-list li.selected {
+    background-color: variables.$base-color;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.dropdown-list li.selected:hover {
+    background-color: darken(variables.$base-color, 10%);
+}
+
+.dropdown-container.filter-active .dropdown-trigger {
+    border-color: variables.$base-color;
+    color: #000000;
+}
+
+.hidden {
+    display: none;
+}
+
+.pagination-bar {
+    display: flex;
+    gap: 1rem;
+
+    
+}
+.pagination-bar .next-page {
+    margin-left: auto;
+
+}
+.pagination-bar .page-btn-container {
+    display: flex;
+    justify-content: center;
+        width: 70%;
+}
+.btn.pagination{
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: black;
+
+
+}
+
+.btn.pagination:hover{
+    background-color: variables.$text-light-greyed;
+    color: black
+}
+
+.btn.pagination.active{
+    background-color: variables.$base-color;
+    color: white
+}
+.btn.pagination.next{
+    border: 2px solid variables.$base-color;
+    padding: 1rem 1.5rem;
+}
+.btn.pagination.prev{
+    border: 2px solid variables.$base-color;
+    padding: 1rem 1.5rem;
+}
+
+.btn.pagination.prev:hover{
+    background-color: variables.$base-color;
+    color: white
+}
+
+.btn.pagination.next:hover{
+    background-color: variables.$base-color;
+    color: white
+}
+
+.btn.pagination.next.hidden-btn, .btn.pagination.prev.hidden-btn{
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.catalog-products-container {
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+    row-gap: 3rem;
+
+}

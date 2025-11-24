@@ -1,0 +1,165 @@
+@charset "UTF-8";
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+.modal-backdrop.hidden {
+  display: block;
+}
+
+.login-modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  width: 480px;
+  height: 384px;
+  padding: 5rem;
+  background-color: #FFFFFF;
+}
+.login-modal .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #727174;
+}
+.login-modal .password-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.login-modal .password-container i {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: #727174;
+}
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+}
+.login-modal form label {
+  font-weight: 400;
+  display: block;
+}
+.login-modal form .settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.login-modal form .checkbox-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login-modal form input[type=password] {
+  position: relative;
+}
+.login-modal form input:invalid:not(:-moz-placeholder) {
+  border: 2px solid #dc3545;
+  outline-color: #dc3545;
+}
+.login-modal form input:invalid:not(:placeholder-shown) {
+  border: 2px solid #dc3545;
+  outline-color: #dc3545;
+}
+.login-modal form input:valid:not(:-moz-placeholder) {
+  border: 2px solid #28a745;
+  outline-color: #28a745;
+}
+.login-modal form input:valid:not(:placeholder-shown) {
+  border: 2px solid #28a745;
+  outline-color: #28a745;
+}
+.login-modal form input:invalid:focus {
+  border: 2px solid #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+.login-modal form input:valid:focus {
+  border: 2px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+.login-modal form #rememberMe {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #727174;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.4rem;
+}
+.login-modal form #rememberMe:checked {
+  background-color: #B92770;
+  border-color: #B92770;
+}
+.login-modal form #rememberMe:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+.login-modal form label[for=rememberMe] {
+  line-height: 1rem;
+  font-size: 0.7rem;
+  display: inline;
+  margin: 0;
+  color: #504E4A;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.login-modal form .settings a {
+  color: #504E4A;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.login-modal form .forgot {
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  line-height: 1rem;
+}
+.login-modal form .forgot a {
+  color: #B92770;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1rem;
+}
+.login-modal form .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: #dc3545;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+.login-modal a.btn {
+  margin-top: 2rem;
+  text-align: center;
+}/*# sourceMappingURL=modal.css.map */

@@ -1,0 +1,94 @@
+header {
+  display: block;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 999;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 40px 0;
+  z-index: 999;
+}
+.top-header .social-icons,
+.top-header .user-icons {
+  flex: 1;
+  display: flex;
+}
+.top-header .social-icons {
+  justify-content: flex-start;
+}
+.top-header .user-icons {
+  justify-content: flex-end;
+}
+.top-header .user-icons .cart-icon {
+  position: relative;
+}
+.top-header .user-icons .cart-quantity {
+  height: 20px;
+  width: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -16px;
+  right: -17px;
+  color: #B92770;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border: 3px solid #B92770;
+  border-radius: 50%;
+}
+.top-header .social-icons a,
+.top-header .user-icons a {
+  margin: 0 8px;
+  color: #555;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.top-header .logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.top-header .logo a {
+  font-size: 22px;
+  font-weight: bold;
+  color: #B92770;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.top-header .logo a img {
+  background-color: #B92770;
+  width: 32px;
+  padding: 2px;
+  border-radius: 7px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  list-style: none;
+}
+nav ul a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 5px 10px;
+}
+nav ul a.active {
+  color: #B92770;
+}
+nav ul a:hover {
+  color: #B92770;
+}/*# sourceMappingURL=header.css.map */

@@ -1,0 +1,105 @@
+@use '../abstracts/variables';
+
+.contacts {
+    .contacts-container {
+        display: flex;
+        margin: 8rem auto;
+        gap: 5rem;
+
+        .contacts-card {
+            flex: 1 1 20%;
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            gap: 24px;
+
+            .icon-img {
+                width: 62px;
+                height: 62px;
+                margin-bottom: 16px;
+                background-color: variables.$base-color;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    height: 70%;
+                    width: auto;
+                }
+
+            }
+        }
+    }
+}
+
+.feedback-section {
+    margin-bottom: 9rem;
+}
+
+.feedback-section .wrapper {
+    display: flex;
+    gap: 2.5rem;
+
+
+    .img-container {
+        flex: 1 1 50%;
+        min-width: 300px;
+        display: flex;
+        height: 700px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .form-container {
+        flex: 1 1 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 2rem;
+
+        h5 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+
+        }
+
+
+        a.btn {
+            margin-top: 0;
+        }
+
+
+
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .success {
+        color: green;
+        font-size: 0.76rem;
+    }
+
+    .error {
+        color: red;
+
+    }
+
+}
+
+#contact-form .controls{
+    justify-content: flex-start;
+}

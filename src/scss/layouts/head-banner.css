@@ -1,0 +1,36 @@
+.head-banner {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.head-banner img {
+  width: 100%;
+  height: 554px;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(60%);
+}
+.head-banner .text-container {
+  position: absolute;
+  color: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.head-banner .text-container h1 {
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.head-banner .text-container p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 400;
+  width: 60%;
+}/*# sourceMappingURL=head-banner.css.map */

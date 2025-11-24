@@ -1,0 +1,200 @@
+@use '../abstracts/variables';
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+
+    &.hidden {
+        display: block;
+    }
+}
+
+.login-modal {
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+
+    .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #727174;
+    }
+
+    .password-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 1rem;
+
+        i {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: #727174;
+        }
+
+
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-weight: 400;
+            display: block;
+        }
+
+        .settings {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+
+        input[type="password"] {
+            position: relative
+        }
+
+        input:invalid:not(:placeholder-shown) {
+            border: 2px solid #dc3545;
+            outline-color: #dc3545;
+        }
+
+        input:valid:not(:placeholder-shown) {
+            border: 2px solid #28a745;
+            outline-color: #28a745;
+        }
+
+        input:invalid:focus {
+            border: 2px solid #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+
+        input:valid:focus {
+            border: 2px solid #28a745;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+
+
+        #rememberMe {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #727174;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin: 0;
+            padding: 0.4rem
+        }
+
+        #rememberMe:checked {
+            background-color: variables.$base-color;
+            border-color: variables.$base-color;
+        }
+
+        #rememberMe:checked::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+
+        label[for="rememberMe"] {
+            line-height: 1rem;
+            font-size: 0.7rem;
+            display: inline;
+            margin: 0;
+            color: variables.$footer-banner-color;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .settings a {
+            color: variables.$footer-banner-color;
+            text-decoration: none;
+            align-self: flex-start;
+
+        }
+
+        .forgot {
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            line-height: 1rem;
+
+            a {
+                color: variables.$base-color;
+                font-weight: 700;
+                text-decoration: none;
+                line-height: 1rem;
+
+            }
+
+         
+
+
+        }
+
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+
+                color: #dc3545;
+                font-size: 0.8rem;
+                line-height: 1rem;
+        }
+
+
+    }
+
+    width: 480px;
+    height: 384px;
+    padding: 5rem;
+    background-color: #FFFFFF;
+
+    a.btn {
+        margin-top: 2rem;
+        text-align: center;
+
+    }
+
+}

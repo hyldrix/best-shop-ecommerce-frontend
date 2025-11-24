@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hover Dropdown Preview</title>
+    <style>
+        /* --- CSS STYLES --- */
+        body {
+            font-family: sans-serif;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+
+        .custom-filter-dropdown {
+            position: relative;
+            width: 200px;
+            /* Fixed width for preview */
+        }
+
+        .dropdown-container {
+            position: relative;
+            width: 100%;
+        }
+
+        /* The box you see initially */
+        .dropdown-trigger {
+            padding: 10px;
+            border: 2px solid #ccc;
+            background-color: #ffffff;
+            color: #333;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Adding a little arrow */
+        .dropdown-trigger::after {
+            content: '▼';
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        /* The hidden list */
+        .dropdown-list {
+            display: none;
+            /* Hidden by default */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-top: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .dropdown-list li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dropdown-list li:hover {
+            background-color: #000;
+            /* distinct hover color */
+            color: #fff;
+        }
+
+        /* --- THE HOVER LOGIC --- */
+        .dropdown-container:hover .dropdown-list {
+            display: block;
+        }
+
+        /* Visual helper for this preview */
+        .debug-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Hover over the box below:</h3>
+
+    <div class="input-group custom-filter-dropdown">
+
+        <div class="dropdown-container">
+            <div class="dropdown-trigger" id="size-display">Choose Size</div>
+
+            <ul class="dropdown-list">
+                <li data-value="default">Choose Size (Reset)</li>
+                <li data-value="S">Small</li>
+                <li data-value="M">Medium</li>
+                <li data-value="L">Large</li>
+                <li data-value="XL">Extra Large</li>
+            </ul>
+
+            <input type="hidden" id="size-value" value="default">
+        </div>
+    </div>
+
+    <div class="debug-info">
+        Current Hidden Value: <span id="debug-text">default</span>
+    </div>
+
+    <script>
+        const dropdowns = document.querySelectorAll('.custom-filter-dropdown');
+        const debugText = document.getElementById('debug-text');
+
+        dropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+            const options = dropdown.querySelectorAll('.dropdown-list li');
+
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    // 1. Get values
+                    const value = option.getAttribute('data-value');
+                    const text = option.innerText;
+
+                    // 2. Update Display
+                    trigger.innerText = text;
+
+                    // 3. Update Hidden Input
+                    hiddenInput.value = value;
+
+                    // 4. Update Debug Text (Just for this preview)
+                    debugText.innerText = value;
+
+                    console.log("Selected:", value);
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,595 @@
+@use '../abstracts/variables';
+
+.product-info {
+
+    .wrapper {
+
+        .product-info-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+
+
+            .gallery {
+                display: flex;
+                flex-direction: column;
+                align-self: stretch;
+                width: 50%;
+                gap: 0.5rem;
+
+                .main-img-container {
+
+                    width: 100%;
+                    flex-grow: 1;
+                    min-height: 500px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+                }
+
+                .main-img-container img {
+
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    object-position: center;
+
+                }
+
+                .thumbnails {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.2em;
+                    justify-content: space-between;
+                    align-items: stretch;
+
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        object-fit: cover;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .product-details {
+                flex: 0 0 50%;
+                box-sizing: border-box;
+                padding: 0 1rem;
+
+
+
+
+            }
+
+            .product-details h3 {
+                width: 90%;
+                margin-bottom: 1rem;
+                line-height: 3rem;
+            }
+
+
+            .star-rating {
+                padding-bottom: 1rem;
+
+            }
+
+
+            .star-rating span {
+                color: variables.$text-greyed;
+            }
+
+            .price {
+                font-size: 1.2rem;
+                font-weight: 700;
+                padding-bottom: 2rem;
+            }
+
+            .description p {
+                line-height: 2rem;
+                margin-bottom: 1rem;
+                color: variables.$text-greyed;
+            }
+
+
+            .dropdown-form {
+                margin-bottom: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+
+                label {
+                    font-weight: 700;
+                    font-size: 1rem;
+                    color: variables.$text-greyed;
+                }
+
+
+                select {
+                    width: 100%;
+                    padding: 0.8rem;
+                    border: 2px solid variables.$select-field-border;
+                    background-color: #f1f1f1;
+                    color: variables.$text-greyed;
+
+                    background-color: #ffffff;
+                    margin-bottom: 1rem;
+                    font-size: 0.8rem;
+                }
+
+                button {
+                    background-color: variables.$base-color;
+                    color: white;
+                    font-weight: 700;
+                    padding: 1rem 2rem;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .form-controls {
+
+                    display: flex;
+                    flex-basis: 10%;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 1rem;
+
+                    .qty-control {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        font-weight: 700;
+
+                        border: 2px solid variables.$base-color;
+                        padding: 0.1rem
+                    }
+
+                    .qty-control input {
+                        background-color: white;
+                        border: none;
+                        font-family: variables.$font;
+                        font-size: 1.2rem;
+                        text-align: center;
+                        margin-bottom: 0;
+                        color: variables.$text-greyed;
+                        font-weight: 700;
+                        padding: rem 0;
+                    }
+
+                    input[type="number"]::-webkit-inner-spin-button,
+                    input[type="number"]::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    input[type="number"] {
+                        -moz-appearance: textfield;
+                    }
+
+
+                    .qty-control button {
+                        background-color: white;
+                        color: variables.$text-greyed;
+                        border: none;
+                        padding: 0.5rem 0.5rem;
+                        font-size: 0.8rem;
+                        cursor: pointer;
+                        line-height: 1;
+                    }
+
+                    .add-to-cart {
+                        flex: 1;
+                        width: 100%;
+
+                    }
+
+                    .add-to-cart .btn {
+                        margin-top: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1px solid variables.$base-color;
+                        padding: 1rem 1rem;
+                    }
+
+
+
+
+                }
+            }
+
+            .payment-providers {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                margin: 1rem 0;
+
+
+            }
+
+            .payment-providers span {
+                font-weight: 700;
+                font-size: 1.25rem;
+                color: variables.$text-light-greyed;
+            }
+        }
+    }
+}
+
+.you-may-also-like {
+    width: 100%;
+}
+
+.you-may-also-like .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .section-header {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: inline-block;
+        font-size: 2rem;
+    }
+
+    .you-may-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .section-header::after {
+        content: '';
+        display: block;
+        height: 2px;
+        background-color: variables.$base-color;
+        width: 20rem;
+        margin: 1rem auto;
+    }
+}
+
+.additional-info {
+    width: 100%;
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+
+    .toggle-menu .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 7rem;
+        margin-bottom: 1rem;
+    }
+
+    .toggle-menu li a {
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        color: #000000;
+    }
+
+    .toggle-menu li.active a::after {
+        content: '';
+        margin-top: 0.3rem;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: variables.$base-color;
+
+    }
+
+    .subsection {
+        display: none;
+
+
+    }
+
+    .subsection.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .details-container {
+
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin-top: 3rem;
+
+        .reviews {
+            flex-direction: row;
+            gap: 2rem;
+        }
+
+
+
+        .existing-reviews-container {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 50%;
+
+
+            .review {
+                margin-bottom: 5rem;
+            }
+
+
+            .review .header-line {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+            }
+
+            .review-amount {
+                font-weight: 700;
+                margin-bottom: 1rem;
+                margin-bottom: 5rem;
+            }
+
+            .name {
+                font-weight: 700;
+                color: variables.$text-greyed;
+
+
+            }
+
+            .name span {
+                font-weight: 400;
+                font-size: 0.8rem;
+                color: variables.$text-light-greyed;
+                margin-left: 2rem;
+            }
+        }
+
+
+        p {
+            margin-bottom: 1rem;
+            color: variables.$text-greyed;
+            font-size: 1rem;
+        }
+
+        .review-card {
+            display: flex;
+            padding-right: 2rem;
+            gap: 1rem;
+
+
+        }
+
+        .header-line {
+            display: flex;
+
+
+        }
+
+        .review-form {
+            font-size: 0.76rem;
+            flex: 1 0 50%;
+        }
+
+        .review-subsection p span {
+            color: variables.$base-color;
+        }
+
+        .review-subsection p {
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+        }
+
+        .review-subsection>h5 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .rate-product {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+
+        }
+
+        .rate-product span {
+            font-weight: 700;
+            font-size: 0.76rem;
+
+        }
+
+        .star-rating-input {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 0.5rem;
+            width: fit-content;
+
+            // Hide the radio buttons
+            input[type="radio"] {
+                display: none;
+            }
+
+            // Style the star labels
+            label {
+                font-size: 1.2rem;
+                cursor: pointer;
+                color: #e4dbdb;
+                transition: color 0.2s ease;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+
+                i {
+                    display: block;
+                }
+            }
+
+            // Hover effect - color the hovered star and all stars to its right
+            label:hover,
+            label:hover~label {
+                color: variables.$star-color;
+            }
+
+            // Style checked stars
+            input[type="radio"]:checked~label {
+                color: variables.$star-color;
+            }
+
+            // Keep checked stars colored when hovering over other stars
+            input[type="radio"]:checked~label:hover~label,
+            input[type="radio"]:checked~label~label:hover~label {
+                color: variables.$star-color;
+            }
+        }
+
+        .main-form-data {
+
+
+            .input-container {
+                position: relative;
+                box-sizing: border-box;
+                flex: 0 1 50%;
+
+
+
+                .custom-placeholder {
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
+                    font-size: 0.76rem;
+                    font-weight: 400;
+
+                    pointer-events: none;
+                    transition: all 0.2s ease;
+                }
+
+
+                input:focus~.custom-placeholder,
+                textarea:focus~.custom-placeholder {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+
+
+                textarea:valid+.custom-placeholder,
+                input:valid+.custom-placeholder {
+                    opacity: 0;
+                }
+
+                textarea:invalid:not(:placeholder-shown)~.custom-placeholder,
+                input:invalid:not(:placeholder-shown)~.custom-placeholder {
+                    opacity: 0;
+                }
+
+                label::after {
+                    content: '*';
+                    color: variables.$base-color;
+                    margin-left: 0.1rem;
+                    font-size: 0.76rem;
+                    transition: all 0.2s ease;
+                }
+            }
+
+        }
+
+
+
+
+        .main-form-data textarea {
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            font-family: variables.$font;
+            font-size: 0.76rem;
+
+        }
+
+
+        .main-form-data .contact-details {
+            width: 100%;
+
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+
+
+
+
+            .input-container input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+
+        }
+
+        .review-container {
+            position: rel
+        }
+
+        .main-form-data input {
+            flex: 1;
+            font-family: variables.$font;
+            font-size: 0.76rem;
+            margin-bottom: 0;
+        }
+
+        .main-form-data .save-data-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .main-form-data .save-data-container label {
+            font-weight: 400;
+            font-size: 0.76rem;
+            margin-bottom: 0;
+        }
+
+    }
+
+
+
+}
+
+.star-rating i {
+    color: variables.$star-color;
+}
+
+.product-error {
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 5rem;
+}
+
+.add-to-cart {
+    box-sizing: border-box;
+}
+
+#success-error {
+    margin-top: 0.5rem;
+    font-size: 0.76rem;
+}
+
+#success-error.success {
+    color: green;
+}
+
+#success-error.error {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}

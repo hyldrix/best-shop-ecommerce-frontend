@@ -1,0 +1,28 @@
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
+@use 'sass:color';
+
+.btn {
+    display: inline-block;
+    @include mixins.clear-a-deco;
+    background-color: variables.$base-color;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 20px 25px;
+    font-weight: 700;
+    font-family: variables.$font;
+    border: none;
+    
+
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: color.scale(variables.$base-color, $lightness: -10%)
+    }
+}
+
+.product-btn {
+    padding: 10px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+}
