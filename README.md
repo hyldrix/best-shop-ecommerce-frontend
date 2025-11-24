@@ -189,3 +189,4 @@ Package.json Scripts
 
 
 ## License: ISC
+- Project was completed as a final stage of EPAM Front-end fundamentals program, which I recommend to anyone who comes across this project.
